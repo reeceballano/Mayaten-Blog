@@ -33,7 +33,7 @@ class Home_Controller extends Base_Controller {
 	public function action_index()	{
 		return View::make('home.index')
 			->with('title', 'Mayaten Blog')
-			->with('posts', Post::order_by('created_at')->get())
+			->with('posts', Post::with('category')->get())
 			->with('recent_comments', Comment::order_by('created_at')->get());
 	}
 

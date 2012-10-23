@@ -25,7 +25,7 @@ class Create_Users_Table {
 	 */
 	public function down()
 	{
-		Schema::down('users');
+		Schema::drop('users');
 	}
 
 }

@@ -13,6 +13,10 @@ class Post Extends Eloquent {
 		return $this->has_many('Comment', 'post_id');
 	}
 
+	public function category() {
+		return $this->belongs_to('Category');
+	}
+
 	public static function validate($inputs) {
 		return Validator::make($inputs, static::$rules);
 	}

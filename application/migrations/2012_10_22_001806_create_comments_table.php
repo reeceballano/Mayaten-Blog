@@ -25,7 +25,7 @@ class Create_Comments_Table {
 	 */
 	public function down()
 	{
-		Schema::down('comments');
+		Schema::drop('comments');
 	}
 
 }

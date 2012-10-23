@@ -43,6 +43,7 @@ Route::get('post/(:any)/edit', array('as'=>'post_edit', 'uses'=>'posts@edit'));
 Route::put('post/update', array('uses'=>'posts@update'));
 Route::delete('post/delete', array('uses'=>'posts@destroy'));
 Route::delete('comment/delete', array('uses'=>'comments@destroy'));
+Route::get('category/(:any)', array('as'=>'category_show', 'uses'=>'categories@show'));
 
 /*
 |--------------------------------------------------------------------------

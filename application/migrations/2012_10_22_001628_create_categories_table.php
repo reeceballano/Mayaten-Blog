@@ -23,7 +23,7 @@ class Create_Categories_Table {
 	 */
 	public function down()
 	{
-		Schema::down('categories');
+		Schema::drop('categories');
 	}
 
 }

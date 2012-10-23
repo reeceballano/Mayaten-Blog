@@ -26,7 +26,7 @@ class Create_Posts_Table {
 	 */
 	public function down()
 	{
-		Schema::down('posts');
+		Schema::DROP('posts');
 	}
 
 }

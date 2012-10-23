@@ -6,7 +6,7 @@ class Posts_Controller Extends Base_Controller {
 	public function get_index() {
 		return View::make('posts.index')
 			->with('title', 'Mayaten Blog')
-			->with('posts', Post::order_by('created_at')->get())
+			->with('posts', Post::with('category')->get())
 			->with('recent_comments', Comment::order_by('created_at')->get());
 
 	}
@@ -22,7 +22,7 @@ class Posts_Controller Extends Base_Controller {
 	public function get_new() {
 		return View::make('posts.new')
 			->with('title', 'Add new Post')
-			->with('categories', Category::lists('category_name', 'category_name'))
+			->with('categories', Category::lists('name', 'id'))
 			->with('recent_comments', Comment::order_by('created_at')->get());
 	}
 
@@ -38,7 +38,7 @@ class Posts_Controller Extends Base_Controller {
 				'title' => Input::get('title'),
 				'body' => Input::get('body'),
 				'author' => Input::get('author'),
-				'category' => Input::get('category'),
+				'name' => Input::get('category'),
 			));
 
 			return Redirect::to_route('post_add')
@@ -50,7 +50,7 @@ class Posts_Controller Extends Base_Controller {
 		return View::make('posts.edit')
 			->with('title', Post::find($id)->title . 'Edit - Mayaten.com Blog')
 			->with('post', Post::find($id))
-			->with('categories', Category::lists('category_name', 'category_name'))
+			->with('categories', Category::lists('name', 'id'))
 			->with('recent_comments', Comment::order_by('created_at')->get());
 	}
 
@@ -66,19 +66,24 @@ class Posts_Controller Extends Base_Controller {
 				'title' => Input::get('title'),
 				'body' => Input::get('body'),
 				'author' => Input::get('author'),
-				'category' => Input::get('category'),
+				'category_id' => Input::get('category'),
 			));
 
-			return Redirect::to_route('post_edit', Input::get('id'))
+			return Redirect::to_route('post_view', Input::get('id'))
 				->with('message', 'Post has been updated successfully!');
 		}	
 	}
 
 	public function delete_destroy() {
 		$id = Input::get('id');
-		//Post::find($id)->delete();
-		Post::find($id)->comments()->delete();
+		
+		//*Note: Make sure to set post_id as your foreign key.
+		//*Note: Set ON DELETE CASCADE in your comments table
 		Post::find($id)->delete();
+		
+		//*Info: Incase you didn't set your comments table "ON DELETE CASCADE", just the code below.
+		//Post::find($id)->comments()->delete();
+		//Post::find($id)->delete();
 
 		return Redirect::to_route('posts')
 			->with('message', 'Post has been deleted successfully!');
