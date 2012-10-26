@@ -10,7 +10,7 @@ class Post Extends Eloquent {
 								);
 
 	public function comments() {
-		return $this->has_many('Comment', 'post_id');
+		return $this->has_many('Comment');
 	}
 
 	public function category() {

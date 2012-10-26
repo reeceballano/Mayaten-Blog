@@ -10,4 +10,8 @@ class Comment Extends Eloquent {
 	public static function validate($inputs) {
 		return Validator::make($inputs, static::$rules);
 	}
+
+	public function post() {
+		return $this->belongs_to('Post');
+	}
 }

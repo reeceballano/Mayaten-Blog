@@ -35,6 +35,7 @@
 					{{ Form::select('category', $categories, Input::old('category')) }} <br />
 
 					{{ Form::submit('Add Post') }}
+					
 				{{ Form::close() }}
 			</div>
 
@@ -42,7 +43,7 @@
 				<h4>Recent Comments</h4>
 				<ul>
 				@foreach($recent_comments as $comment)
-					<li>{{ HTML::link_to_route('post_view', $comment->comment_msg, array($comment->post_id)) }}</li>
+					<li>{{ HTML::link_to_route('post_view', $comment->comment_msg, array($comment->post->slug)) }}</li>
 				@endforeach
 				</ul>
 			</div>
