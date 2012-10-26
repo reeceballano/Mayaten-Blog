@@ -85,7 +85,7 @@ class Posts_Controller Extends Base_Controller {
 		$post = Post::find(Input::get('id'));
 
 		if($validation->fails()) {
-			return Redirect::to_route('post_edit',  $t)
+			return Redirect::to_route('post_edit',  $post->slug)
 				->with_errors($validation)
 				->with_input();
 		} else {

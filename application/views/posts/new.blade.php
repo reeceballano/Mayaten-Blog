@@ -34,7 +34,7 @@
 
 					{{ Form::select('category', $categories, Input::old('category')) }} <br />
 
-					{{ Form::submit('Add Post') }}
+					{{ Form::submit('Add Post', array('class' => 'btn primary')) }}
 					
 				{{ Form::close() }}
 			</div>

@@ -68,7 +68,7 @@ return array(
 		),
 
 		'mysql' => array(
-
+			
 			'driver'   => 'mysql',
 			'host'     => getenv('MYSQL_DB_HOST'),
 			'database' => getenv('MYSQL_DB_NAME'),
@@ -76,17 +76,17 @@ return array(
 			'password' => getenv('MYSQL_PASSWORD'),
 			'charset'  => 'utf8',
 			'prefix'   => '',
-
-
+			
 			/*
 			'driver'   => 'mysql',
 			'host'     => 'localhost',
 			'database' => 'mayaten_phpfogapp_com',
 			'username' => 'root',
-			'password' => 'root',
+			'password' => '',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			*/
+			
 		
 		),
 

@@ -36,7 +36,7 @@
 
 					{{ Form::select('category', $categories, Input::old('category')) }} <br />
 
-					{{ Form::submit('Update') }}
+					{{ Form::submit('Update', array('class' => 'btn primary')) }}
 				{{ Form::close() }}
 			</div>
 

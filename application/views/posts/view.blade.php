@@ -60,7 +60,7 @@
 
 					{{ Form::hidden('id', $post->id) }}
 
-					{{ Form::submit('Add Comment') }}
+					{{ Form::submit('Add Comment', array('class', 'btn primary')) }}
 				{{ Form::close() }}
 			</div>
 
